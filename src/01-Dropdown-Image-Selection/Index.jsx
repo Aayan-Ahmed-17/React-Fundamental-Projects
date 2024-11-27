@@ -3,6 +3,8 @@ import { Image, ChevronUp, ChevronDown } from "lucide-react";
 const Index = () => {
   const [selectedImg, setSelctedImg] = useState(false);
   const [isArrUp, setIsArrUp] = useState(false);
+  const [selectedImageid, setSelctedImgId] = useState()
+  const intial = '../../src/assets/images/profile-'
   const imgUrls = [
     "../../src/assets/images/profile-image1.png",
     "../../src/assets/images/profile-image2.png",
@@ -13,6 +15,11 @@ const Index = () => {
   function toggleArr() {
     setIsArrUp(!isArrUp);
   }
+  
+  function getImageid(id) {
+    console.log(id)
+    setSelctedImg(imgUrls[id])
+  }
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center">
@@ -21,7 +28,7 @@ const Index = () => {
           {selectedImg ? (
             <img
               className="w-16 cursor-pointer"
-              src="../src/assets/images/profile-image1.png"
+              src={selectedImg}
               alt="selected image"
               title="selected image"
             />
@@ -46,26 +53,6 @@ const Index = () => {
         </div>
         {isArrUp && (
           <div className="w-[22rem] min-h-32 bg-red-500 flex flex-wrap gap-3 px-5 py-2">
-            {/* <img
-              className="w-16 h-16 cursor-pointer"
-              src="../../src/assets/images/profile-image1.png"
-              alt="profile"
-            />
-            <img
-              className="w-16 h-16 cursor-pointer"
-              src="../../src/assets/images/profile-image2.png"
-              alt=""
-            />
-            <img
-              className="w-16 h-16 cursor-pointer"
-              src="../../src/assets/images/profile-image3.png"
-              alt=""
-            />
-            <img
-              className="w-16 h-16 cursor-pointer"
-              src="../../src/assets/images/profile-image1.png"
-              alt=""
-            /> */}
             {imgUrls.map((e, i) => {
               return (
                 <img
@@ -73,6 +60,7 @@ const Index = () => {
                   className="w-16 h-16 cursor-pointer"
                   src={e}
                   alt="Profile Image"
+                  onClick={()=>getImageid(i)}
                 />
               );
             })}
