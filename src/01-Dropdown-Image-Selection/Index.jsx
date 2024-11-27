@@ -3,6 +3,12 @@ import { Image, ChevronUp, ChevronDown } from "lucide-react";
 const Index = () => {
   const [selectedImg, setSelctedImg] = useState(false);
   const [isArrUp, setIsArrUp] = useState(false);
+  const imgUrls = [
+    "../../src/assets/images/profile-image1.png",
+    "../../src/assets/images/profile-image2.png",
+    "../../src/assets/images/profile-image3.png",
+    "../../src/assets/images/profile-image1.png",
+  ];
 
   function toggleArr() {
     setIsArrUp(!isArrUp);
@@ -38,12 +44,40 @@ const Index = () => {
           )}
           {/* {isArrUp && console.log("running..")} */}
         </div>
-        {isArrUp && <div className="w-[22rem] min-h-32 bg-red-500 flex flex-wrap gap-3 px-5 py-2">
-          <img className="w-16 h-16 cursor-pointer" src="../../src/assets/images/profile-image1.png" alt="profile" />
-          <img className="w-16 h-16 cursor-pointer" src="../../src/assets/images/profile-image2.png" alt="" />
-          <img className="w-16 h-16 cursor-pointer" src="../../src/assets/images/profile-image3.png" alt="" />
-          <img className="w-16 h-16 cursor-pointer" src="../../src/assets/images/profile-image1.png" alt="" />
-        </div>}
+        {isArrUp && (
+          <div className="w-[22rem] min-h-32 bg-red-500 flex flex-wrap gap-3 px-5 py-2">
+            {/* <img
+              className="w-16 h-16 cursor-pointer"
+              src="../../src/assets/images/profile-image1.png"
+              alt="profile"
+            />
+            <img
+              className="w-16 h-16 cursor-pointer"
+              src="../../src/assets/images/profile-image2.png"
+              alt=""
+            />
+            <img
+              className="w-16 h-16 cursor-pointer"
+              src="../../src/assets/images/profile-image3.png"
+              alt=""
+            />
+            <img
+              className="w-16 h-16 cursor-pointer"
+              src="../../src/assets/images/profile-image1.png"
+              alt=""
+            /> */}
+            {imgUrls.map((e, i) => {
+              return (
+                <img
+                  key={i}
+                  className="w-16 h-16 cursor-pointer"
+                  src={e}
+                  alt="Profile Image"
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );
